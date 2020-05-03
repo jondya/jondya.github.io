@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jondya.xyz/"/>
-  <updated>2020-05-02T13:11:06.893Z</updated>
+  <updated>2020-05-03T13:38:40.402Z</updated>
   <id>https://jondya.xyz/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里云安装MySQL8.0.20</title>
+    <link href="https://jondya.xyz/2020/05/03/CentOS7%E5%AE%89%E8%A3%85MySQL8-0-20/"/>
+    <id>https://jondya.xyz/2020/05/03/CentOS7%E5%AE%89%E8%A3%85MySQL8-0-20/</id>
+    <published>2020-05-03T12:19:46.000Z</published>
+    <updated>2020-05-03T13:38:40.402Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近买的阿里云服务器安装mysql的时候遇到一些问题,做个记录,安装的MySQL版本为8.0.20，阿里云服务器系统是CentOS7.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://jondya.xyz/categories/linux/"/>
+    
+    
+      <category term="mysql" scheme="https://jondya.xyz/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>mybatis自动更新时间</title>
