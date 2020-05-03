@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>jondya的博客</title>
-  <icon>https://jondya.github.io/icon.png</icon>
+  <icon>https://jondya.xyz/icon.png</icon>
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://jondya.github.io/"/>
+  <link href="https://jondya.xyz/"/>
   <updated>2020-05-02T13:11:06.893Z</updated>
-  <id>https://jondya.github.io/</id>
+  <id>https://jondya.xyz/</id>
   
   <author>
     <name>jondya</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>mybatis自动更新时间</title>
-    <link href="https://jondya.github.io/2020/05/01/mybatis%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85/"/>
-    <id>https://jondya.github.io/2020/05/01/mybatis%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85/</id>
+    <link href="https://jondya.xyz/2020/05/01/mybatis%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85/"/>
+    <id>https://jondya.xyz/2020/05/01/mybatis%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85/</id>
     <published>2020-05-01T11:59:20.000Z</published>
     <updated>2020-05-02T13:11:06.893Z</updated>
     
@@ -31,7 +31,7 @@
     
     
     
-      <category term="mybatis" scheme="https://jondya.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="https://jondya.xyz/tags/mybatis/"/>
     
   </entry>
   
