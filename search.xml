@@ -1,27 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>mybatis自动更新时间</title>
-    <url>/2020/05/01/mybatis%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85/</url>
-    <content><![CDATA[<h3 id="在要填充的字段上加上TableField注解"><a href="#在要填充的字段上加上TableField注解" class="headerlink" title="在要填充的字段上加上TableField注解"></a>在要填充的字段上加上TableField注解</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 注意！这里需要标记为填充字段</span></span><br><span class="line">    <span class="meta">@TableField</span>( fill = FieldFill.INSERT)	<span class="comment">// 在创建时更新</span></span><br><span class="line">    <span class="keyword">private</span> String fillField;</span><br><span class="line">    <span class="meta">@TableField</span>( fill = FieldFill.UPDATE)	</span><br><span class="line">    <span class="keyword">private</span> String fillField2;</span><br><span class="line">    <span class="meta">@TableField</span>( fill = FieldFill.INSERT_UPDATE)	<span class="comment">// 在创建和改变时更新</span></span><br><span class="line">    <span class="keyword">private</span> String fillField3;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h3 id="实现MetaObjectHandler接口"><a href="#实现MetaObjectHandler接口" class="headerlink" title="实现MetaObjectHandler接口"></a>实现MetaObjectHandler接口</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMetaObjectHandler</span> <span class="keyword">implements</span> <span class="title">MetaObjectHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertFill</span><span class="params">(MetaObject metaObject)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"start insert fill ...."</span>);</span><br><span class="line">        <span class="keyword">this</span>.strictInsertFill(metaObject, <span class="string">"createTime"</span>, LocalDateTime<span class="class">.<span class="keyword">class</span>, <span class="title">LocalDateTime</span>.<span class="title">now</span>())</span>; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateFill</span><span class="params">(MetaObject metaObject)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"start update fill ...."</span>);</span><br><span class="line">        <span class="keyword">this</span>.strictUpdateFill(metaObject, <span class="string">"updateTime"</span>, LocalDateTime<span class="class">.<span class="keyword">class</span>, <span class="title">LocalDateTime</span>.<span class="title">now</span>())</span>; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="mybatis-plus实现乐观锁"><a href="#mybatis-plus实现乐观锁" class="headerlink" title="mybatis-plus实现乐观锁"></a>mybatis-plus实现乐观锁</h3><h4 id="1，在spring中注册OptimisticLockerInterceptor"><a href="#1，在spring中注册OptimisticLockerInterceptor" class="headerlink" title="1，在spring中注册OptimisticLockerInterceptor"></a>1，在spring中注册OptimisticLockerInterceptor</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> OptimisticLockerInterceptor <span class="title">optimisticLockerInterceptor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> OptimisticLockerInterceptor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2，在实体类字段上加上version注解"><a href="#2，在实体类字段上加上version注解" class="headerlink" title="2，在实体类字段上加上version注解"></a>2，在实体类字段上加上version注解</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Version</span></span><br><span class="line">	<span class="keyword">private</span> Integer version;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意！<strong>支持的数据类型只有:int,Integer,long,Long,Date,Timestamp,LocalDateTime</strong></p>
-]]></content>
-      <tags>
-        <tag>mybatis</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>阿里云安装MySQL8.0.20</title>
-    <url>/2020/05/03/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85MySQL8-0-20/</url>
+    <url>/archives/3221.html</url>
     <content><![CDATA[<p>最近买的阿里云服务器安装mysql的时候遇到一些问题,做个记录,安装的MySQL版本为8.0.20，阿里云服务器系统是CentOS7.</p>
 <a id="more"></a>
 
@@ -46,7 +27,7 @@
 <h3 id="查看启动状态"><a href="#查看启动状态" class="headerlink" title="查看启动状态"></a>查看启动状态</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
 
 <p>下图的情况表示启动成功</p>
-<img src="/2020/05/03/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85MySQL8-0-20/image-20200503205814923.png" class="" title="image">
+<img src="/archives/3221/image-20200503205814923.png" class="" title="image">
 
 <h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl enable mysqld</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
 
@@ -55,7 +36,7 @@
 <h2 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h2><h3 id="修改初始密码"><a href="#修改初始密码" class="headerlink" title="修改初始密码"></a>修改初始密码</h3><p>1,输入以下命令,在my.cnf中添加skip-grant-tables跳过密码验证,不然登录不了MySQL</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/05/03/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85MySQL8-0-20/image-20200503210610131.png" class="" title="image">
+<img src="/archives/3221/image-20200503210610131.png" class="" title="image">
 
 <p>2,重启MySQL</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>

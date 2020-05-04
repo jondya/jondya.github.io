@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jondya.xyz/"/>
-  <updated>2020-05-03T14:09:55.760Z</updated>
+  <updated>2020-05-04T00:56:55.506Z</updated>
   <id>https://jondya.xyz/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>阿里云安装MySQL8.0.20</title>
-    <link href="https://jondya.xyz/2020/05/03/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85MySQL8-0-20/"/>
-    <id>https://jondya.xyz/2020/05/03/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85MySQL8-0-20/</id>
-    <published>2020-05-03T14:02:03.000Z</published>
-    <updated>2020-05-03T14:09:55.760Z</updated>
+    <link href="https://jondya.xyz/archives/3221.html"/>
+    <id>https://jondya.xyz/archives/3221.html</id>
+    <published>2020-05-04T00:55:24.000Z</published>
+    <updated>2020-05-04T00:56:55.506Z</updated>
     
     <summary type="html">
     
@@ -34,25 +34,6 @@
     
     
       <category term="mysql" scheme="https://jondya.xyz/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mybatis自动更新时间</title>
-    <link href="https://jondya.xyz/2020/05/01/mybatis%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85/"/>
-    <id>https://jondya.xyz/2020/05/01/mybatis%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85/</id>
-    <published>2020-05-01T11:59:20.000Z</published>
-    <updated>2020-05-02T13:11:06.893Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;在要填充的字段上加上TableField注解&quot;&gt;&lt;a href=&quot;#在要填充的字段上加上TableField注解&quot; class=&quot;headerlink&quot; title=&quot;在要填充的字段上加上TableField注解&quot;&gt;&lt;/a&gt;在要填充的字段上加上TableField注解&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;User&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 注意！这里需要标记为填充字段&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@TableField&lt;/span&gt;( fill = FieldFill.INSERT)	&lt;span class=&quot;comment&quot;&gt;// 在创建时更新&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; String fillField;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@TableField&lt;/span&gt;( fill = FieldFill.UPDATE)	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; String fillField2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@TableField&lt;/span&gt;( fill = FieldFill.INSERT_UPDATE)	&lt;span class=&quot;comment&quot;&gt;// 在创建和改变时更新&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; String fillField3;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="mybatis" scheme="https://jondya.xyz/tags/mybatis/"/>
     
   </entry>
   
