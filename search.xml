@@ -1,32 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>阿里云安装MySQL8.0.20</title>
-      <link href="/archives/3221.html"/>
-      <url>/archives/3221.html</url>
-      
-        <content type="html"><![CDATA[<p>最近买的阿里云服务器安装mysql的时候遇到一些问题,做个记录,安装的MySQL版本为8.0.20，阿里云服务器系统是CentOS7.</p><a id="more"></a><h2 id="下载MySQL"><a href="#下载MySQL" class="headerlink" title="下载MySQL"></a>下载MySQL</h2><h3 id="在MySQL官网中下载YUM源rpm安装包"><a href="#在MySQL官网中下载YUM源rpm安装包" class="headerlink" title="在MySQL官网中下载YUM源rpm安装包"></a>在MySQL官网中下载YUM源rpm安装包</h3><p>执行如下的命令:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure><h3 id="安装MySQL源"><a href="#安装MySQL源" class="headerlink" title="安装MySQL源"></a>安装MySQL源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum localinstall mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure><h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2><p>输入以下命令,等待下载完成即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure><h2 id="启动MySQL"><a href="#启动MySQL" class="headerlink" title="启动MySQL"></a>启动MySQL</h2><h3 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure><h3 id="查看启动状态"><a href="#查看启动状态" class="headerlink" title="查看启动状态"></a>查看启动状态</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure><p>下图的情况表示启动成功</p><h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure><h2 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h2><h3 id="修改初始密码"><a href="#修改初始密码" class="headerlink" title="修改初始密码"></a>修改初始密码</h3><p>1,输入以下命令,在my.cnf中添加skip-grant-tables跳过密码验证,不然登录不了MySQL</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure><p>2,重启MySQL</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure><p>3,登录MySQL,输入密码的时候回车即可</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure><p>4,将密码设为空,</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;       // 选择MySQL数据库</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> authentication_string=<span class="string">''</span> <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">'root'</span>;  //将root用户密码设为空</span><br></pre></td></tr></table></figure><p>5,退出MySQL重新编辑my.cnf,把skip-grant-tables去掉,重启MySQL</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure><p>6,重新登陆MySQL</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure><p>7,修改密码,注意密码必须是大小写字母+数字+特殊字符</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'xxx'</span>;</span><br></pre></td></tr></table></figure><p>8,修改host,让数据库支持远程连接</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update user set host ='%' where user='root';</span><br><span class="line">flush privileges;  // 刷新</span><br><span class="line">systemctl restart mysqld //重启MySQL</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>阿里云安装MySQL8.0.20</title>
+    <url>/archives/3221.html</url>
+    <content><![CDATA[<p>最近买的阿里云服务器安装mysql的时候遇到一些问题,做个记录,安装的MySQL版本为8.0.20，阿里云服务器系统是CentOS7.</p>
+<a id="more"></a>
+
+<h2 id="下载MySQL"><a href="#下载MySQL" class="headerlink" title="下载MySQL"></a>下载MySQL</h2><h3 id="在MySQL官网中下载YUM源rpm安装包"><a href="#在MySQL官网中下载YUM源rpm安装包" class="headerlink" title="在MySQL官网中下载YUM源rpm安装包"></a>在MySQL官网中下载YUM源rpm安装包</h3><p>执行如下的命令:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="安装MySQL源"><a href="#安装MySQL源" class="headerlink" title="安装MySQL源"></a>安装MySQL源</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum localinstall mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2><p>输入以下命令,等待下载完成即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="启动MySQL"><a href="#启动MySQL" class="headerlink" title="启动MySQL"></a>启动MySQL</h2><h3 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="查看启动状态"><a href="#查看启动状态" class="headerlink" title="查看启动状态"></a>查看启动状态</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
+
+<p>下图的情况表示启动成功</p>
+
+
+<h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl enable mysqld</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h2><h3 id="修改初始密码"><a href="#修改初始密码" class="headerlink" title="修改初始密码"></a>修改初始密码</h3><p>1,输入以下命令,在my.cnf中添加skip-grant-tables跳过密码验证,不然登录不了MySQL</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2,重启MySQL</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
+
+<p>3,登录MySQL,输入密码的时候回车即可</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+
+<p>4,将密码设为空,</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;       // 选择MySQL数据库</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> authentication_string=<span class="string">''</span> <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">'root'</span>;  //将root用户密码设为空</span><br></pre></td></tr></table></figure>
+
+<p>5,退出MySQL重新编辑my.cnf,把skip-grant-tables去掉,重启MySQL</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
+
+<p>6,重新登陆MySQL</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+
+<p>7,修改密码,注意密码必须是大小写字母+数字+特殊字符</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'xxx'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>8,修改host,让数据库支持远程连接</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">update user set host ='%' where user='root';</span><br><span class="line">flush privileges;  // 刷新</span><br><span class="line">systemctl restart mysqld //重启MySQL</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
-          
-          <category> linux </category>
-          
+        <category>linux</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> mysql </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
 </search>
