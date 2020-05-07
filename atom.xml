@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>jondya的博客</title>
-  <icon>https://jondya.xyz/icon.png</icon>
+  <icon>http://jondya.com/icon.png</icon>
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://jondya.xyz/"/>
+  <link href="http://jondya.com/"/>
   <updated>2020-05-04T01:10:34.108Z</updated>
-  <id>https://jondya.xyz/</id>
+  <id>http://jondya.com/</id>
   
   <author>
     <name>jondya</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>阿里云安装MySQL8.0.20</title>
-    <link href="https://jondya.xyz/archives/3221.html"/>
-    <id>https://jondya.xyz/archives/3221.html</id>
+    <link href="http://jondya.com/archives/3221.html"/>
+    <id>http://jondya.com/archives/3221.html</id>
     <published>2020-05-04T00:55:24.000Z</published>
     <updated>2020-05-04T01:10:34.108Z</updated>
     
@@ -30,10 +30,10 @@
     </summary>
     
     
-      <category term="linux" scheme="https://jondya.xyz/categories/linux/"/>
+      <category term="linux" scheme="http://jondya.com/categories/linux/"/>
     
     
-      <category term="mysql" scheme="https://jondya.xyz/tags/mysql/"/>
+      <category term="mysql" scheme="http://jondya.com/tags/mysql/"/>
     
   </entry>
   
