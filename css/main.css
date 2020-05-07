@@ -1214,7 +1214,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffffe3;
+  background: #715308;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2648,4 +2648,7 @@ body {
 .popular-posts-item a {
   color: #00e;
   font-size: 20px;
+}
+.beian a {
+  color: #fff;
 }
