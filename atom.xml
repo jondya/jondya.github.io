@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>jondya的博客</title>
-  <icon>https://jondya.xyz/icon.png</icon>
+  <icon>http://123.57.143.94/icon.png</icon>
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://jondya.xyz/"/>
+  <link href="http://123.57.143.94/"/>
   <updated>2021-01-22T09:07:27.576Z</updated>
-  <id>https://jondya.xyz/</id>
+  <id>http://123.57.143.94/</id>
   
   <author>
     <name>jondya</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>启动和关闭nginx</title>
-    <link href="https://jondya.xyz/archives/63688.html"/>
-    <id>https://jondya.xyz/archives/63688.html</id>
+    <link href="http://123.57.143.94/archives/63688.html"/>
+    <id>http://123.57.143.94/archives/63688.html</id>
     <published>2021-01-22T09:00:38.000Z</published>
     <updated>2021-01-22T09:07:27.576Z</updated>
     
@@ -30,17 +30,17 @@
     </summary>
     
     
-      <category term="linux" scheme="https://jondya.xyz/categories/linux/"/>
+      <category term="linux" scheme="http://123.57.143.94/categories/linux/"/>
     
     
-      <category term="nginx" scheme="https://jondya.xyz/tags/nginx/"/>
+      <category term="nginx" scheme="http://123.57.143.94/tags/nginx/"/>
     
   </entry>
   
   <entry>
     <title>配置文件中明文密码的加密</title>
-    <link href="https://jondya.xyz/archives/19098.html"/>
-    <id>https://jondya.xyz/archives/19098.html</id>
+    <link href="http://123.57.143.94/archives/19098.html"/>
+    <id>http://123.57.143.94/archives/19098.html</id>
     <published>2021-01-22T08:15:37.000Z</published>
     <updated>2021-01-22T08:39:51.759Z</updated>
     
@@ -51,17 +51,17 @@
     </summary>
     
     
-      <category term="java" scheme="https://jondya.xyz/categories/java/"/>
+      <category term="java" scheme="http://123.57.143.94/categories/java/"/>
     
     
-      <category term="springboot" scheme="https://jondya.xyz/tags/springboot/"/>
+      <category term="springboot" scheme="http://123.57.143.94/tags/springboot/"/>
     
   </entry>
   
   <entry>
     <title>阿里云安装MySQL8.0.20</title>
-    <link href="https://jondya.xyz/archives/3221.html"/>
-    <id>https://jondya.xyz/archives/3221.html</id>
+    <link href="http://123.57.143.94/archives/3221.html"/>
+    <id>http://123.57.143.94/archives/3221.html</id>
     <published>2020-05-04T00:55:24.000Z</published>
     <updated>2021-01-22T08:35:38.364Z</updated>
     
@@ -72,10 +72,10 @@
     </summary>
     
     
-      <category term="linux" scheme="https://jondya.xyz/categories/linux/"/>
+      <category term="linux" scheme="http://123.57.143.94/categories/linux/"/>
     
     
-      <category term="mysql" scheme="https://jondya.xyz/tags/mysql/"/>
+      <category term="mysql" scheme="http://123.57.143.94/tags/mysql/"/>
     
   </entry>
   

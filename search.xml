@@ -1,114 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>配置文件中明文密码的加密</title>
-    <url>/archives/19098.html</url>
-    <content><![CDATA[<p>在开发中，为了安全起见，配置文件中不应该存在明文密码，而应该对其进行加密，这篇文章主要介绍在springboot项目中使用jasypt来对配置文件进行加密。</p>
-<a id="more"></a>
-
-<h2 id="在pom-xml中导入jasypt-spring-boot-starter依赖"><a href="#在pom-xml中导入jasypt-spring-boot-starter依赖" class="headerlink" title="在pom.xml中导入jasypt-spring-boot-starter依赖"></a>在pom.xml中导入jasypt-spring-boot-starter依赖</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.ulisesbocchio<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jasypt-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="设置jasypt-encryptor-password"><a href="#设置jasypt-encryptor-password" class="headerlink" title="设置jasypt.encryptor.password"></a>设置jasypt.encryptor.password</h2><p>jasypt.encryptor.password是用来加密配置文件的密钥，所以最好不要写在配置文件中，可以通过配置系统环境变量例如：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">jasypt:</span></span><br><span class="line">  <span class="attr">encryptor:</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">$&#123;JASYPT_ENCRYPTOR_PASSWORD&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>这种方式来得到。</p>
-<h2 id="在测试类中注入StringEncryptor调用encrypt方法得到加密后的密码"><a href="#在测试类中注入StringEncryptor调用encrypt方法得到加密后的密码" class="headerlink" title="在测试类中注入StringEncryptor调用encrypt方法得到加密后的密码"></a>在测试类中注入StringEncryptor调用encrypt方法得到加密后的密码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DemoApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ApplicationContext appCtx;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringEncryptor stringEncryptor;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        Environment environment = appCtx.getBean(Environment<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">        String mysqlPwd = environment.getProperty(<span class="string">"spring.datasource.password"</span>);</span><br><span class="line">        String redisPwd = environment.getProperty(<span class="string">"spring.redis.password"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(encrypt(mysqlPwd));</span><br><span class="line">        System.out.println(encrypt(redisPwd));</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">encrypt</span><span class="params">(String originPassword)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stringEncryptor.encrypt(originPassword);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="最后将得到的密码以如下方式写入到配置文件中"><a href="#最后将得到的密码以如下方式写入到配置文件中" class="headerlink" title="最后将得到的密码以如下方式写入到配置文件中"></a>最后将得到的密码以如下方式写入到配置文件中</h2><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">  	<span class="attr">password:</span> <span class="string">ENC(得到的密码)</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">  	<span class="attr">password:</span> <span class="string">ENC(xxx)</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>启动和关闭nginx</title>
+      <link href="/archives/63688.html"/>
+      <url>/archives/63688.html</url>
+      
+        <content type="html"><![CDATA[<p>一些linux命令用来查看nginx的运行状态，以及启动，关闭nginx。</p><a id="more"></a><h3 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx</span><br></pre></td></tr></table></figure><h3 id="查看端口被谁占用"><a href="#查看端口被谁占用" class="headerlink" title="查看端口被谁占用"></a>查看端口被谁占用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nap|grep 端口号</span><br></pre></td></tr></table></figure><h3 id="查看nginx进程"><a href="#查看nginx进程" class="headerlink" title="查看nginx进程"></a>查看nginx进程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep nginx</span><br></pre></td></tr></table></figure><h3 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -s 9 进程号</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
       <categories>
-        <category>java</category>
+          
+          <category> linux </category>
+          
       </categories>
-      <tags>
-        <tag>springboot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>启动和关闭nginx</title>
-    <url>/archives/63688.html</url>
-    <content><![CDATA[<p>一些linux命令用来查看nginx的运行状态，以及启动，关闭nginx。</p>
-<a id="more"></a>
-
-<h3 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl start nginx</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看端口被谁占用"><a href="#查看端口被谁占用" class="headerlink" title="查看端口被谁占用"></a>查看端口被谁占用</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netstat -nap|grep 端口号</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看nginx进程"><a href="#查看nginx进程" class="headerlink" title="查看nginx进程"></a>查看nginx进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ps -ef|grep nginx</span><br></pre></td></tr></table></figure>
-
-<h3 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kill -s 9 进程号</span><br></pre></td></tr></table></figure>
-
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>配置文件中明文密码的加密</title>
+      <link href="/archives/19098.html"/>
+      <url>/archives/19098.html</url>
+      
+        <content type="html"><![CDATA[<p>在开发中，为了安全起见，配置文件中不应该存在明文密码，而应该对其进行加密，这篇文章主要介绍在springboot项目中使用jasypt来对配置文件进行加密。</p><a id="more"></a><h2 id="在pom-xml中导入jasypt-spring-boot-starter依赖"><a href="#在pom-xml中导入jasypt-spring-boot-starter依赖" class="headerlink" title="在pom.xml中导入jasypt-spring-boot-starter依赖"></a>在pom.xml中导入jasypt-spring-boot-starter依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.ulisesbocchio<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jasypt-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="设置jasypt-encryptor-password"><a href="#设置jasypt-encryptor-password" class="headerlink" title="设置jasypt.encryptor.password"></a>设置jasypt.encryptor.password</h2><p>jasypt.encryptor.password是用来加密配置文件的密钥，所以最好不要写在配置文件中，可以通过配置系统环境变量例如：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">jasypt:</span></span><br><span class="line">  <span class="attr">encryptor:</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">$&#123;JASYPT_ENCRYPTOR_PASSWORD&#125;</span></span><br></pre></td></tr></table></figure><p>这种方式来得到。</p><h2 id="在测试类中注入StringEncryptor调用encrypt方法得到加密后的密码"><a href="#在测试类中注入StringEncryptor调用encrypt方法得到加密后的密码" class="headerlink" title="在测试类中注入StringEncryptor调用encrypt方法得到加密后的密码"></a>在测试类中注入StringEncryptor调用encrypt方法得到加密后的密码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DemoApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ApplicationContext appCtx;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringEncryptor stringEncryptor;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        Environment environment = appCtx.getBean(Environment<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">        String mysqlPwd = environment.getProperty(<span class="string">"spring.datasource.password"</span>);</span><br><span class="line">        String redisPwd = environment.getProperty(<span class="string">"spring.redis.password"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(encrypt(mysqlPwd));</span><br><span class="line">        System.out.println(encrypt(redisPwd));</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">encrypt</span><span class="params">(String originPassword)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stringEncryptor.encrypt(originPassword);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="最后将得到的密码以如下方式写入到配置文件中"><a href="#最后将得到的密码以如下方式写入到配置文件中" class="headerlink" title="最后将得到的密码以如下方式写入到配置文件中"></a>最后将得到的密码以如下方式写入到配置文件中</h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">  <span class="attr">password:</span> <span class="string">ENC(得到的密码)</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">  <span class="attr">password:</span> <span class="string">ENC(xxx)</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
       <categories>
-        <category>linux</category>
+          
+          <category> java </category>
+          
       </categories>
-      <tags>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>阿里云安装MySQL8.0.20</title>
-    <url>/archives/3221.html</url>
-    <content><![CDATA[<p>最近买的阿里云服务器安装mysql的时候遇到一些问题,做个记录,安装的MySQL版本为8.0.20，阿里云服务器系统是CentOS7.</p>
-<a id="more"></a>
-
-<h2 id="下载MySQL"><a href="#下载MySQL" class="headerlink" title="下载MySQL"></a>下载MySQL</h2><h3 id="在MySQL官网中下载YUM源rpm安装包"><a href="#在MySQL官网中下载YUM源rpm安装包" class="headerlink" title="在MySQL官网中下载YUM源rpm安装包"></a>在MySQL官网中下载YUM源rpm安装包</h3><p>执行如下的命令:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="安装MySQL源"><a href="#安装MySQL源" class="headerlink" title="安装MySQL源"></a>安装MySQL源</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum localinstall mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2><p>输入以下命令,等待下载完成即可</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="启动MySQL"><a href="#启动MySQL" class="headerlink" title="启动MySQL"></a>启动MySQL</h2><h3 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="查看启动状态"><a href="#查看启动状态" class="headerlink" title="查看启动状态"></a>查看启动状态</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
-
-<p>下图的情况表示启动成功</p>
-<img src="/archives/3221/1.png" class="" title="image">
-
-<h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl enable mysqld</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h2><h3 id="修改初始密码"><a href="#修改初始密码" class="headerlink" title="修改初始密码"></a>修改初始密码</h3><p>1,输入以下命令,在my.cnf中添加skip-grant-tables跳过密码验证,不然登录不了MySQL</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure>
-
-<p>2,重启MySQL</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
-
-<p>3,登录MySQL,输入密码的时候回车即可</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
-
-<p>4,将密码设为空,</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;       // 选择MySQL数据库</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> authentication_string=<span class="string">''</span> <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">'root'</span>;  //将root用户密码设为空</span><br></pre></td></tr></table></figure>
-
-<p>5,退出MySQL重新编辑my.cnf,把skip-grant-tables去掉,重启MySQL</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
-
-<p>6,重新登陆MySQL</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
-
-<p>7,修改密码,注意密码必须是大小写字母+数字+特殊字符</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'xxx'</span>;</span><br></pre></td></tr></table></figure>
-
-<p>8,修改host,让数据库支持远程连接</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">update user set host ='%' where user='root';</span><br><span class="line">flush privileges;  // 刷新</span><br><span class="line">systemctl restart mysqld //重启MySQL</span><br></pre></td></tr></table></figure>
-
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> springboot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>阿里云安装MySQL8.0.20</title>
+      <link href="/archives/3221.html"/>
+      <url>/archives/3221.html</url>
+      
+        <content type="html"><![CDATA[<p>最近买的阿里云服务器安装mysql的时候遇到一些问题,做个记录,安装的MySQL版本为8.0.20，阿里云服务器系统是CentOS7.</p><a id="more"></a><h2 id="下载MySQL"><a href="#下载MySQL" class="headerlink" title="下载MySQL"></a>下载MySQL</h2><h3 id="在MySQL官网中下载YUM源rpm安装包"><a href="#在MySQL官网中下载YUM源rpm安装包" class="headerlink" title="在MySQL官网中下载YUM源rpm安装包"></a>在MySQL官网中下载YUM源rpm安装包</h3><p>执行如下的命令:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure><h3 id="安装MySQL源"><a href="#安装MySQL源" class="headerlink" title="安装MySQL源"></a>安装MySQL源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum localinstall mysql80-community-release-el7-1.noarch.rpm</span><br></pre></td></tr></table></figure><h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2><p>输入以下命令,等待下载完成即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure><h2 id="启动MySQL"><a href="#启动MySQL" class="headerlink" title="启动MySQL"></a>启动MySQL</h2><h3 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure><h3 id="查看启动状态"><a href="#查看启动状态" class="headerlink" title="查看启动状态"></a>查看启动状态</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure><p>下图的情况表示启动成功</p><img src="/archives/3221/1.png" class="" title="image"><h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure><h2 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h2><h3 id="修改初始密码"><a href="#修改初始密码" class="headerlink" title="修改初始密码"></a>修改初始密码</h3><p>1,输入以下命令,在my.cnf中添加skip-grant-tables跳过密码验证,不然登录不了MySQL</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure><p>2,重启MySQL</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure><p>3,登录MySQL,输入密码的时候回车即可</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure><p>4,将密码设为空,</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;       // 选择MySQL数据库</span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> authentication_string=<span class="string">''</span> <span class="keyword">where</span> <span class="keyword">user</span>=<span class="string">'root'</span>;  //将root用户密码设为空</span><br></pre></td></tr></table></figure><p>5,退出MySQL重新编辑my.cnf,把skip-grant-tables去掉,重启MySQL</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure><p>6,重新登陆MySQL</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure><p>7,修改密码,注意密码必须是大小写字母+数字+特殊字符</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'xxx'</span>;</span><br></pre></td></tr></table></figure><p>8,修改host,让数据库支持远程连接</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update user set host ='%' where user='root';</span><br><span class="line">flush privileges;  // 刷新</span><br><span class="line">systemctl restart mysqld //重启MySQL</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
       <categories>
-        <category>linux</category>
+          
+          <category> linux </category>
+          
       </categories>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
