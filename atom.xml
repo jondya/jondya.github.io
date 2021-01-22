@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jondya.xyz/"/>
-  <updated>2021-01-21T11:12:36.005Z</updated>
+  <updated>2021-01-22T08:39:51.759Z</updated>
   <id>https://jondya.xyz/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>配置文件中明文密码的加密</title>
+    <link href="https://jondya.xyz/archives/19098.html"/>
+    <id>https://jondya.xyz/archives/19098.html</id>
+    <published>2021-01-22T08:15:37.000Z</published>
+    <updated>2021-01-22T08:39:51.759Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在开发中，为了安全起见，配置文件中不应该存在明文密码，而应该对其进行加密，这篇文章主要介绍在springboot项目中使用jasypt来对配置文件进行加密。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="https://jondya.xyz/categories/java/"/>
+    
+    
+      <category term="springboot" scheme="https://jondya.xyz/tags/springboot/"/>
+    
+  </entry>
+  
+  <entry>
     <title>阿里云安装MySQL8.0.20</title>
     <link href="https://jondya.xyz/archives/3221.html"/>
     <id>https://jondya.xyz/archives/3221.html</id>
     <published>2020-05-04T00:55:24.000Z</published>
-    <updated>2021-01-21T11:12:36.005Z</updated>
+    <updated>2021-01-22T08:35:38.364Z</updated>
     
     <summary type="html">
     
