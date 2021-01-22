@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jondya.xyz/"/>
-  <updated>2021-01-22T08:39:51.759Z</updated>
+  <updated>2021-01-22T09:07:27.576Z</updated>
   <id>https://jondya.xyz/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>启动和关闭nginx</title>
+    <link href="https://jondya.xyz/archives/63688.html"/>
+    <id>https://jondya.xyz/archives/63688.html</id>
+    <published>2021-01-22T09:00:38.000Z</published>
+    <updated>2021-01-22T09:07:27.576Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一些linux命令用来查看nginx的运行状态，以及启动，关闭nginx。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://jondya.xyz/categories/linux/"/>
+    
+    
+      <category term="nginx" scheme="https://jondya.xyz/tags/nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>配置文件中明文密码的加密</title>
