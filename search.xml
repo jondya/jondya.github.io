@@ -69,7 +69,7 @@
 
 <h3 id="查看nginx进程"><a href="#查看nginx进程" class="headerlink" title="查看nginx进程"></a>查看nginx进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ps -ef|grep nginx</span><br></pre></td></tr></table></figure>
 
-<h3 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kill -s 9 进程号</span><br></pre></td></tr></table></figure>
+<h3 id="关闭nginx"><a href="#关闭nginx" class="headerlink" title="关闭nginx"></a>关闭nginx</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl stop nginx</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
